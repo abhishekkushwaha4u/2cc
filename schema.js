@@ -10,7 +10,9 @@ const bcrypt = require("bcryptjs")
 
 let UserSchema = new mongoose.Schema({
     username:String,
-    password:String
+    password:String,
+    name:String,
+    country:String
 })
 
 let userModel = mongoose.model("user", UserSchema)
@@ -38,7 +40,9 @@ module.exports.CreateUser = async (data) =>{
 
     return await userModel.create({
         username:data.username,
-        password:pw
+        password:pw,
+        name: data.name,
+        country : data.country
     })
     // .then((user)=>{
 

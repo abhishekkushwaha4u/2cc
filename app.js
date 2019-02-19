@@ -19,20 +19,21 @@ app.use(bp.urlencoded({extended:false}));
 /**
  * 
  * Connect to DB-
- * 1. require mongoose ( ORM )
+ * 1. require mongoose ( ORM ) Object Relational Mapper
  * 2. connect to DB
  * 3. create a schema
  * 4. create CRUD
  * 5. export functions
  */
 
- // 1. Connect to DB
-mongoose.connect("mongodb://admin123:admin123@ds119070.mlab.com:19070/2cc", {useNewUrlParser:true})
+ // 1. Connect to DB and use new flag for urlparser
+mongoose.connect("mongodb+srv://admin:admin123@personal-incubator-mtqwu.mongodb.net/test?retryWrites=true", {useNewUrlParser:true})
 
 // 2. Check if connected
 mongoose.connection.once("connected", ()=>{
     console.log("Connected to DB")
-}).on("error", ()=>{
+}).on("error", (err)=>{
+    console.log(err)
     console.log("Error connecting to DB")
 })
 
